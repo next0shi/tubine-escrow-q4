@@ -16,6 +16,7 @@ pub struct Make<'info> {
     )]
     pub mint_a: InterfaceAccount<'info, Mint>,
     #[account(
+
         mint::token_program = token_program
     )]
     pub mint_b: InterfaceAccount<'info, Mint>,
@@ -31,7 +32,7 @@ pub struct Make<'info> {
         payer = maker,
         seeds = [ESCROW_SEED, maker.key().as_ref(), seed.to_le_bytes().as_ref()],
         space = Escrow::DISCRIMINATOR.len() + Escrow::INIT_SPACE,
-        bump
+        bump,  
     )]
     pub escrow: Account<'info, Escrow>,
     #[account(
